@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* O tema escuro é ativado pela classe .dark no container do app */
+@custom-variant dark (&:where(.dark, .dark *));
