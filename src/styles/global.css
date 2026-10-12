@@ -1,4 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-/* O tema escuro é ativado pela classe .dark no container do app */
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #29263a;
+  background: #f6f3ea;
+  font-synthesis: none;
+  --ink: #29263a;
+  --muted: #706d7b;
+  --paper: #fffefa;
+  --canvas: #f6f3ea;
+  --line: #ded9cc;
+  --purple: #6352a3;
+  --purple-soft: #ece8fa;
+  --coral: #da6e5b;
+  --coral-soft: #fae8e3;
+  --green: #4b8065;
+  --green-soft: #e4f0e8;
+  --yellow: #dfad4e;
+  --shadow: 0 8px 30px rgba(57, 47, 34, 0.08);
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
