@@ -1,3 +1,7 @@
+import Sidebar from "./components/Sidebar/Sidebar";
+
 export default function App() {
-  return <div className="p-8 text-2xl font-semibold">Caderno</div>;
+  return(
+    Sidebar()
+  );
 }
