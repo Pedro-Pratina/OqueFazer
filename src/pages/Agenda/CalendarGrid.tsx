@@ -1,5 +1,7 @@
 'use strict'
 
+import { useMemo } from "react";
+
 interface DiaAgenda {
   dataString: string;
   numeroDia: string;
@@ -61,30 +63,40 @@ function gerarEstruturaAgenda(anoInicio: number, anoFim: number): AnoAgenda[] {
         dias: diasDoMes
 
       });
-
-      agendaCompleta.push({
+    }
+    agendaCompleta.push({
         ano,
         meses: mesesDoAno
       });
-
-    }
   }
 
   return agendaCompleta;
 }
 
-const minhaAgenda = gerarEstruturaAgenda(2020, 2026)
-
 /*-----------------------------------------------------------*/
 
 
 export default function CalendarGrid() {
+  const dataAtual = ():string => {
+    return new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+    }).format(new Date())
+  }
+  const hoje = dataAtual();
+  const anoAtual = Number(hoje.slice(6, 10))
+
+  const minhaAgenda = useMemo(() => gerarEstruturaAgenda(anoAtual -1, anoAtual), [])
+  const diaAtual = minhaAgenda[1].meses[Number(hoje.slice(3, 5))-1].dias[Number(hoje.slice(0, 2))-1]
+  const mesAtual = minhaAgenda[1].meses[Number(hoje.slice(3, 5))-1]
+
+  console.log(diaAtual)
+  console.log(mesAtual)
 
   return (
-    <div>
+    <div className="p-[0.75rem] bg-(--paper) border border-[var(--line)] rounded-[0.75rem] shadow-[2px_3px_0_rgba(60,50,38,.04)]">
       <div>
         <h3>MINHA AGENDA</h3>
-        <h2> <span></span></h2>
+        <h2>{mesAtual.nomeLongo} <span>{anoAtual}</span></h2>
         <p>Prova</p>
         <p>Trabalhos</p>
         <p>Tarefas</p>
